@@ -228,14 +228,18 @@ else
         elseif name == "Memorabilia" then
             local screen = workspace.NoRemove.House.Memorabilia.Picture
             local cache = {}
-            for _, decal in ipairs(screen:GetChildren()) do
-                decal:GetPropertyChangedSignal("Transparency"):Connect(function()
-                    if decal.Transparency == 0 then
+            local function hsnd(decal)
+               decal:GetPropertyChangedSignal("Transparency"):Connect(function()
+                    if decal.Transparency < .5 then
                         print('added',decal.Name)
                         table.insert(cache, decal.Name)
                     end    
-                end)    
+                end)  
+            end   
+            for _, decal in ipairs(screen:GetChildren()) do
+                hsnd(decal)  
             end    
+            screen.ChildAdded:Connect(hsnd)
         end    
     end)    
     
