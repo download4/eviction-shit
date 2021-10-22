@@ -163,6 +163,7 @@ else
             end    
             if water then
                 local function getWater()
+                    water.CFrame = water.CFrame - (newCF.leftVector * 2.5)
                     game.Players.LocalPlayer.Character:MoveTo(water.Position)
                     game.ReplicatedStorage.Comps["Fire Escape"].OnClientEvent:Wait()
                 end
