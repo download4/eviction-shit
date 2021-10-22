@@ -226,6 +226,7 @@ else
             wait(.3)
             end    
         elseif name == "Memorabilia" then
+            print("doing")
             local screen = workspace.NoRemove.House.Memorabilia.Picture
             local cache = {}
             local function hsnd(decal)
