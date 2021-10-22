@@ -126,8 +126,6 @@ else
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
             local cf = game.Players.LocalPlayer.Character:GetPrimaryPartCFrame()
             cf = cf + (cf.lookVector * 8)
-            game.Players.LocalPlayer.Character.Humanoid:MoveTo(cf.p)
-            game.Players.LocalPlayer.Character.Humanoid.MoveToFinished:Wait()
             for i = 1, 150 do
                 for _,v in ipairs(workspace:GetDescendants()) do
                     if v:IsA("TouchTransmitter") then
