@@ -217,10 +217,10 @@ else
             end)    
         elseif name == "Straight Shooters" then
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
-            for i = 1, 18 do
+            for i = 1, 5 do
                 for _, plr in ipairs(game.Players:GetPlayers()) do
                 if plr.Character and plr ~= game.Players.LocalPlayer then
-                    --game.ReplicatedStorage.Comps.Health:FireServer(plr.Character:WaitForChild("Head"))
+                    game.ReplicatedStorage.Comps.Health:FireServer(plr.Character:WaitForChild("Head"))
                 end    
                 end    
             wait(.3)
