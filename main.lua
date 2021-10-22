@@ -1,4 +1,4 @@
-local UIName = "sexyuilolev"
+    local UIName = "sexyuilolev"
 if game.CoreGui:FindFirstChild(UIName) then
    game.CoreGui[UIName]:Destroy() 
 end
@@ -126,7 +126,7 @@ else
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
             local cf = game.Players.LocalPlayer.Character:GetPrimaryPartCFrame()
             cf = cf + (cf.lookVector * 8)
-            for i = 1, 150 do
+            for i = 1, (150*4) do
                 for _,v in ipairs(workspace:GetDescendants()) do
                     if v:IsA("TouchTransmitter") then
                         task.spawn(function()
@@ -136,7 +136,7 @@ else
                     end)    
                     end    
                 end
-                wait(1)
+                wait(1/4)
             end   
         elseif name == "Bomboozled" then
              game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
@@ -241,6 +241,38 @@ else
                 hsnd(decal)  
             end    
             screen.ChildAdded:Connect(hsnd)
+        end    
+    end)    
+    
+    local House = workspace:WaitForChild("House")
+    House.ChildAdded:Connect(function(Child)
+        if Child.Name == "Shape Shifters" then
+            cname = "Shape Shifters"
+            wait(.5)
+            game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
+            wait(15)
+            local stop = false
+            local stConn = nil
+            stConn = game.ReplicatedStorage.Game.Dialogue.OnClientEvent:Connect(function()
+                stConn:Disconnect()
+                stop = true
+            end)    
+            while true do
+                if stop then
+                    break
+                end   
+                game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position + Vector3.new(2,0,2))
+                for _,v in ipairs(workspace:GetDescendants()) do
+                    if v:IsA("ClickDetector") then
+                        fireclickdetector(v)
+                    end    
+                end
+                game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position)
+                wait(.5)
+                game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position + Vector3.new(2,0,2))
+
+                wait(.1)
+            end    
         end    
     end)    
     
