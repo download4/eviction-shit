@@ -323,7 +323,7 @@ end)
             local Tomato = Hitbox:FindFirstChild("Tomato", true)
             local Lettuce = Hitbox:FindFirstChild("Lettuce", true)
             local Patty = Hitbox:FindFirstChild("Patty", true)
-            local Byn = Hitbox:FindFirstChild("Bun", true)
+            local Bun = Hitbox:FindFirstChild("Bun", true)
             
             
             function MakeBurger()
