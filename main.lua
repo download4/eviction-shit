@@ -311,11 +311,22 @@ end)
                 game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position + Vector3.new(2,0,2))
 
                 wait(1)
-            end    
+            end  
+        elseif Child.Name == "Burger Bustle" then
+            
+            print("burger")
+            cname = "Burger Bustle"
+            
+            local Hitbox = Child.Hitbox
+            local Onion = Hitbox:FindFirstChild("Onion", true)
+            local Cheese = Hitbox:FindFirstChild("Cheese", true)
+            local Tomato = Hitbox:FindFirstChild("Tomato", true)
+            local Lettuce = Hitbox:FindFirstChild("Lettuce", true)
+            local Patty = Hitbox:FindFirstChild("Patty", true)
+            
+            
         end    
     end)    
-    
-end
 
 task.spawn(function()
     while true do
