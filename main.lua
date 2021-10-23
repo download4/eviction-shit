@@ -66,15 +66,9 @@ else
 end)  
         elseif name == "Luggage Leapers" then
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
-            for _, thing in ipairs(workspace:GetDescendants()) do
-                if thing.Name == "Belts" and thing:IsA("Model") then
-                    for _, et in ipairs(thing:GetDescendants()) do
-                        if et.Name == "Main" then
-                            et.Orientation = et.Orientation + Vector3.new(0,180,0)
-                        end    
-                    end    
-                end    
-            end
+            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = true
+            game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
+            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false
         elseif name == "Sinking Feeling" then
              game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
             game.Players.LocalPlayer.Character.PrimaryPart.Anchored = true
@@ -108,15 +102,9 @@ end)
             game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false
         elseif name == "Lumber Leapers" then
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
-            for _, thing in ipairs(workspace:GetDescendants()) do
-                if thing.Name == "Belts" and thing:IsA("Model") then
-                    for _, et in ipairs(thing:GetDescendants()) do
-                        if et.Name == "Main" then
-                            et.Orientation = et.Orientation + Vector3.new(0,180,0)
-                        end    
-                    end    
-                end    
-            end
+            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = true
+            game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
+            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false
         elseif name == "Fire Escape" then
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
             local water = nil
