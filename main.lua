@@ -256,16 +256,15 @@ end)
                 end   
                 game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position + Vector3.new(2,0,2))
                 for _,v in ipairs(workspace:GetDescendants()) do
-                    if v:IsA("ClickDetector") and not DoneS[v.Parent.Name] then
+                    if v:IsA("ClickDetector") then
                         fireclickdetector(v)
-                        DoneS[v.Parent.Name] = true
                     end    
                 end
                 game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position)
-                wait(2.5)
+                wait(.01)
                 game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position + Vector3.new(2,0,2))
 
-                wait(1)
+                wait(.03)
             end  
         elseif Child.Name == "Burger Bustle" then
             
