@@ -345,7 +345,8 @@ end)
             end
             
         end    
-    end)    
+    end)
+end
 
 task.spawn(function()
     while true do
