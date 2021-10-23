@@ -7,7 +7,6 @@ local TargetId = 7795559412
 
 local NewGui = Instance.new("ScreenGui", game.CoreGui)
 NewGui.Name = UIName
-local MainFrame = Instance.new("Frame", NewGui)
 MainFrame.BackgroundColor3 = Color3.fromRGB(54,56,57)
 MainFrame.BorderSizePixel = 0 
 MainFrame.Size = UDim2.fromOffset(500,300)
@@ -104,18 +103,31 @@ else
         cname = name
         if name == "Stratosfear" then
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
-            for _, thing in ipairs(workspace.House.Stratosfear.Touch:GetDescendants()) do
+           task.spawn(function()
+    workspace.DescendantAdded:Connect(function(d)
+        if cname == "Stratosfear" and d:IsA("TouchTransmitter") then
+            d:Destroy()
+        end
+    end)
+    while wait() do
+        if cname ~= "Stratosfear" then
+            break
+        end
+        for _, thing in ipairs(workspace:GetDescendants()) do
                 if thing:IsA("TouchTransmitter") then
                     thing:Destroy()
+                    print("destroyed" .. thing.Name)
                 end    
             end    
+    end    
+end)  
         elseif name == "Luggage Leapers" then
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
             for _, thing in ipairs(workspace:GetDescendants()) do
                 if thing.Name == "Belts" and thing:IsA("Model") then
                     for _, et in ipairs(thing:GetDescendants()) do
                         if et.Name == "Main" then
-                            et.Orientation += Vector3.new(0,180,0)
+                            et.Orientation = et.Orientation + Vector3.new(0,180,0)
                         end    
                     end    
                 end    
