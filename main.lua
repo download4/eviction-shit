@@ -193,9 +193,10 @@ else
                 end    
             end)
         elseif name == "Cents of Balance" then
+            wait(2)
             workspace.House["Cents of Balance"].Fall.TouchInterest:Destroy()
             local touch =  workspace.House["Cents of Balance"].Touch
-            for i = 30,1 do
+            for i = 30,1,-1 do
                 task.spawn(function()
                     firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch, 1)
                     task.wait(.2)
