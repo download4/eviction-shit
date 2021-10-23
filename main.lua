@@ -239,6 +239,13 @@ end)
                 hsnd(decal)  
             end    
             screen.ChildAdded:Connect(hsnd)
+        elseif name == "Buzz in" then
+            
+            local Map = workspace.House["Buzz In"]
+            game.ReplicatedStorage.Comps.BuzzIn.OnClientEvent:Connect(function(...)
+                print(...)
+            end)
+            
         end    
     end)    
     
