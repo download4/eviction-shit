@@ -258,6 +258,7 @@ else
     end)    
     
     local House = workspace:WaitForChild("House")
+    local DoneS = {}
     House.ChildAdded:Connect(function(Child)
         if Child.Name == "Shape Shifters" then
             cname = "Shape Shifters"
@@ -276,8 +277,9 @@ else
                 end   
                 game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position + Vector3.new(2,0,2))
                 for _,v in ipairs(workspace:GetDescendants()) do
-                    if v:IsA("ClickDetector") then
+                    if v:IsA("ClickDetector") and not DoneS[v.Parent.Name] then
                         fireclickdetector(v)
+                        DoneS[v.Parent.Name] = true
                     end    
                 end
                 game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position)
