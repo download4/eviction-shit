@@ -22,20 +22,7 @@ else
     game.ReplicatedStorage.General.Move.OnClientEvent:Connect(function(nv)
         CanWalk = nv
     end)    
-    game.ReplicatedStorage.Game.Dialogue.OnClientEvent:Connect(function(T)
-        if string.find(T, "Congratulations") then
-            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("gg", "All")
-        end   
-        if string.find(T, "nominated") and string.find(T, "eviction") then
-            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("good luck", "All")
-        end    
-        if string.find(T, "not use my") then
-            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("oh no", "All")
-        end    
-        if string.find(T, "nominate") and string.find(T, "2 players") then
-             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("oh noes", "All")
-        end    
-    end)    
+   
     local cname = ""
 
     game.ReplicatedStorage.Game.CompIntro.OnClientEvent:Connect(function(dialog)
@@ -284,6 +271,8 @@ end)
             print("burger")
             cname = "Burger Bustle"
             
+            local List = Child:WaitForChild("List")
+            
             local Hitbox = Child.Hitbox
             local Onion = Hitbox:FindFirstChild("Onion", true)
             local Cheese = Hitbox:FindFirstChild("Cheese", true)
@@ -319,12 +308,3 @@ end)
         end    
     end)
 end
-
-task.spawn(function()
-    while true do
-        pcall(function()
-            game.Players.LocalPlayer.PlayerScripts.Tilt:Destroy()
-        end)    
-        wait(.1)
-    end
-end)
