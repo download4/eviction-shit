@@ -328,14 +328,14 @@ end)
             
             function MakeBurger()
                 task.spawn(function()
-                    firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, Bun.TouchInterest, 0)
+                    firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, Bun, 0)
                     wait(.05)
-                    firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, Bun.TouchInterest, 1)
+                    firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, Bun, 1)
                 end)
                 wait(.1)
-                firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, Patty.TouchInterest, 0)
+                firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, Patty, 0)
                 wait(.05)
-                firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, Patty.TouchInterest, 1)
+                firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, Patty, 1)
             end
             
             -- we need five burgers
