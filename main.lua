@@ -104,9 +104,11 @@ else
         cname = name
         if name == "Stratosfear" then
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
-            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = true
-            game.ReplicatedStorage.Game.Dialogue.OnClientEvent:Wait()
-            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false
+            for _, thing in ipairs(workspace.House.Stratosfear.Touch:GetDescendants()) do
+                if thing:IsA("TouchTransmitter") then
+                    thing:Destroy()
+                end    
+            end    
         elseif name == "Luggage Leapers" then
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
             game.Players.LocalPlayer.Character.PrimaryPart.Anchored = true
@@ -268,10 +270,10 @@ else
                     end    
                 end
                 game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position)
-                wait(.5)
+                wait(2.5)
                 game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position + Vector3.new(2,0,2))
 
-                wait(.1)
+                wait(1)
             end    
         end    
     end)    
