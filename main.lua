@@ -323,7 +323,26 @@ end)
             local Tomato = Hitbox:FindFirstChild("Tomato", true)
             local Lettuce = Hitbox:FindFirstChild("Lettuce", true)
             local Patty = Hitbox:FindFirstChild("Patty", true)
+            local Byn = Hitbox:FindFirstChild("Bun", true)
             
+            
+            function MakeBurger()
+                task.spawn(function()
+                    firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, Bun.TouchInterest, 0)
+                    wait(.05)
+                    firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, Bun.TouchInterest, 1)
+                end)
+                wait(.1)
+                firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, Patty.TouchInterest, 0)
+                wait(.05)
+                firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, Patty.TouchInterest, 1)
+            end
+            
+            -- we need five burgers
+            
+            for i = 1, 5 do
+                MakeBurger() -- make a burger (bun and patty)
+            end
             
         end    
     end)    
