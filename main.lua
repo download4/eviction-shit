@@ -145,16 +145,21 @@ end)
             end    
             if water then
                 local function getWater()
-                    water.CFrame = water.CFrame - (newCF.leftVector * 2.5)
-                    game.Players.LocalPlayer.Character:MoveTo(water.Position)
+                    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, water, 0)
+                                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, water, 1)
                     game.ReplicatedStorage.Comps["Fire Escape"].OnClientEvent:Wait()
                 end
                 getWater()
-                for _, fire in ipairs(workspace:GetDescendants()) do
-                    if fire:IsA("Fire") then
-                        local parent = fire.Parent
+                repeat
+                    for _, fire in ipairs(workspace:GetDescendants()) do
+                    if fire.Name == "Extinguish" then
+                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, fire, 1)
+                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, fire, 0)
+                        getWater()
                     end    
-                end    
+                    end  
+            wait(.02)
+                until cname ~= "Fire Escape"
             end 
         elseif name == "Power Outage" then
             local connnn = nil
@@ -280,6 +285,11 @@ end)
             local Patty = Hitbox:FindFirstChild("Patty", true)
             local Bun = Hitbox:FindFirstChild("Bun", true)
             
+            local ImageToStuff = {
+                
+                
+                
+            }
             
             function MakeBurger()
                 task.spawn(function()
