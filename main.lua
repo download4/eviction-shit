@@ -1,58 +1,27 @@
-    local UIName = "sexyuilolev"
+local UIName = "sexyuilolev"
 if game.CoreGui:FindFirstChild(UIName) then
    game.CoreGui[UIName]:Destroy() 
-end
+end 
 
 local TargetId = 7795559412
 
-local NewGui = Instance.new("ScreenGui", game.CoreGui)
-NewGui.Name = UIName
-MainFrame.BackgroundColor3 = Color3.fromRGB(54,56,57)
-MainFrame.BorderSizePixel = 0 
-MainFrame.Size = UDim2.fromOffset(500,300)
-MainFrame.AnchorPoint = Vector2.new(.5,.5)
-MainFrame.Position = UDim2.fromScale(.5,.5)
-NewGui.DisplayOrder = 694200000
-
-local NewCorner = Instance.new("UICorner", MainFrame)
-local CanWalk = true
-
-local Title = Instance.new("TextLabel", MainFrame)
-Title.Size = UDim2.new(1,0,0,30)
-Title.Position = UDim2.new(.5,0,0,15)
-Title.AnchorPoint = Vector2.new(.5,0)
-Title.TextScaled = true
-Title.Name = "Title"
-Title.BackgroundTransparency = 1
-Title.TextColor3 = Color3.new(1,1,1)
-Title.Font = "GothamSemibold"
-Title.Text = "Eviction Notice Gui"
-
-local TitleUnderline = Instance.new("Frame", MainFrame)
-TitleUnderline.BorderSizePixel = 0
-TitleUnderline.BackgroundTransparency = .7
-TitleUnderline.AnchorPoint = Vector2.new(.5,0)
-TitleUnderline.Position = UDim2.new(.5,0,0,56)
-TitleUnderline.Size = UDim2.new(.8,0,0,1)
-
 if not game.Teams:FindFirstChild("Jury") then
     game.ReplicatedStorage.Hub.Join:InvokeServer()
-    local NewDescription = Instance.new("TextLabel", MainFrame)
-    NewDescription.Text = "Put you in the game. You should be teleported in a bit."
-    NewDescription.Font = "Gotham"
-    NewDescription.BackgroundTransparency = 1
-    NewDescription.Position = UDim2.fromScale(.5,.5)
-    NewDescription.AnchorPoint = Vector2.new(.5,.5)
-    NewDescription.TextColor3 = Color3.fromRGB(255,255,255)
-    NewDescription.TextWrapped = true
-    NewDescription.TextSize = 20
-    NewDescription.Size = UDim2.new(.85,0,.4,0)
-    NewDescription.TextTransparency = .4
+    game.StarterGui:SetCore("SendNotification", {
+      Title = "Eviction Notice",
+      Text = "Joined game for you. Re-execute when teleported",
+      Duratin = 15
+    })
 else
+    game.StarterGui:SetCore("SendNotification", {
+      Title = "Eviction Notice",
+      Text = "Script started",
+      Duratin = 15
+    })
+    print('work')
     game.ReplicatedStorage.General.Move.OnClientEvent:Connect(function(nv)
         CanWalk = nv
     end)    
-    Title.Text = "Eviction Notice (Auto-Play i guess idrk)"
     game.ReplicatedStorage.Game.Dialogue.OnClientEvent:Connect(function(T)
         if string.find(T, "Congratulations") then
             game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("gg", "All")
@@ -68,21 +37,7 @@ else
         end    
     end)    
     local cname = ""
-    MainFrame.Active = true
-    MainFrame.AnchorPoint = Vector2.new(0,0)
-    MainFrame.Position = UDim2.new(0,250,0,250)
-    MainFrame.Draggable = true
-    local NewDescription = Instance.new("TextLabel", MainFrame)
-    NewDescription.Text = "It's working! This should automatically work with all the matches. If one of them isn't detected, please tell me."
-    NewDescription.Font = "Gotham"
-    NewDescription.BackgroundTransparency = 1
-    NewDescription.Position = UDim2.fromScale(.5,.5)
-    NewDescription.AnchorPoint = Vector2.new(.5,.5)
-    NewDescription.TextColor3 = Color3.fromRGB(255,255,255)
-    NewDescription.TextWrapped = true
-    NewDescription.TextSize = 20
-    NewDescription.Size = UDim2.new(.85,0,.4,0)
-    NewDescription.TextTransparency = .4
+
     game.ReplicatedStorage.Game.CompIntro.OnClientEvent:Connect(function(dialog)
         local text = dialog[1][8]
         local split = string.split(text, "'") or string.split(text, '"') or string.split(text, "''")
