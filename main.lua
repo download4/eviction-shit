@@ -169,7 +169,7 @@ end)
                 if thing.Name == "Belts" and thing:IsA("Model") then
                     for _, et in ipairs(thing:GetDescendants()) do
                         if et.Name == "Main" then
-                            et.Orientation += Vector3.new(0,180,0)
+                            et.Orientation = et.Orientation + Vector3.new(0,180,0)
                         end    
                     end    
                 end    
