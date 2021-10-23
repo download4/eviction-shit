@@ -61,6 +61,7 @@ else
            task.spawn(function()
     workspace.DescendantAdded:Connect(function(d)
         if cname == "Stratosfear" and d:IsA("TouchTransmitter") then
+            task.wait(.015)
             d:Destroy()
         end
     end)
