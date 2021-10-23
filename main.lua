@@ -193,7 +193,16 @@ else
                 end    
             end)
         elseif name == "Cents of Balance" then
-            
+            workspace.House["Cents of Balance"].Fall.TouchInterest:Destroy()
+            local touch =  workspace.House["Cents of Balance"].Touch
+            for i = 30,1 do
+                task.spawn(function()
+                    firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch, 1)
+                    task.wait(.2)
+                    firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch, 0)
+                end)    
+                task.wait(1)
+            end    
         elseif name == "Baking Blast" then
             local Model = workspace.House:WaitForChild("Baking Blast")
             local Picture = Model:WaitForChild("Picture")
@@ -229,6 +238,7 @@ else
             end    
         elseif name == "Memorabilia" then
             print("doing")
+            wait(3)
             local screen = workspace.NoRemove.House.Memorabilia.Picture
             local cache = {}
             local function hsnd(decal)
