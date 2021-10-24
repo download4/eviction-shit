@@ -161,10 +161,13 @@ end)
             for i = 30,1,-1 do
                 task.spawn(function()
                     for _,touch in ipairs(workspace:GetDescendants()) do
-                        if touch.Name == "Touch" then
-                            firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch, 1)
+                        if touch:IsA("TouchTransmitter") then
+                            print("FIRING " .. touch.Parent.Name)
+                            firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch.Parent, 1)
                             task.wait(.2)
-                            firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch, 0)
+                            firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch.Parent, 0)
+                        elseif v:IsA("ClickDetector") then
+                            fireclickdetector(v)
                         end
                     end
                 end)    
