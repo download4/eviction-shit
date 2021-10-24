@@ -279,7 +279,7 @@ end)
             
             local ImageToStuff = {
                 
-                rbxassetid://265913845
+                ["rbxassetid://265913845"] = "Cheese"
                 
             }
             
