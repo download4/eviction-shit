@@ -132,12 +132,13 @@ end)
                 repeat
                     for _, fire in ipairs(workspace:GetDescendants()) do
                     if fire:IsA("Fire") then
+                        game.Players.LocalPlayer.Character:MoveTo(fire.Parent.Position)
                         firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, fire.Parent, 1)
                         firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, fire.Parent, 0)
                         getWater()
                     end    
                     end  
-            wait(.02)
+            wait()
                 until cname ~= "Fire Escape"
             end 
         elseif name == "Power Outage" then
