@@ -261,17 +261,18 @@ end)
             while true do
                 if stop then
                     break
-                end   
+                end  
                 game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position + Vector3.new(2,0,2))
                 for _,v in ipairs(workspace:GetDescendants()) do
                     if v:IsA("ClickDetector") then
                         fireclickdetector(v)
                     end    
                 end
+                                firetouchinterest(game.Players.LocalPlayer.Character.PrimaryPart, workspace.House["Shape Shifters"].Return, 0)
                 game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position)
                 wait(.01)
                 game.Players.LocalPlayer.Character.Humanoid:MoveTo(workspace.House["Shape Shifters"].Return.Position + Vector3.new(2,0,2))
-
+                                firetouchinterest(game.Players.LocalPlayer.Character.PrimaryPart, workspace.House["Shape Shifters"].Return, 1)
                 wait(.03)
             end  
         elseif Child.Name == "Burger Bustle" then
