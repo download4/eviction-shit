@@ -4,6 +4,7 @@ if game.CoreGui:FindFirstChild(UIName) then
 end 
 
 local TargetId = 7795559412
+local CurrentDialog = ""
 
 if not game.Teams:FindFirstChild("Jury") then
     game.ReplicatedStorage.Hub.Join:InvokeServer()
@@ -18,6 +19,9 @@ else
       Text = "Script started",
       Duratin = 15
     })
+    game.ReplicatedStorage.Game.Dialogue.OnClientEvent:Connect(function(deez)
+        CurrentDialog = deez
+    end)
     print('work')
     game.ReplicatedStorage.General.Move.OnClientEvent:Connect(function(nv)
         CanWalk = nv
@@ -200,10 +204,10 @@ end)
         elseif name == "Memorabilia" then
             print("doing")
             wait(3)
-            local screen = workspace.NoRemove.House.Memorabilia.Picture
+            local screen = workspace.House.Memorabilia.Picture
             local cache = {}
             local function hsnd(decal)
-               decal:GetPropertyChangedSignal("Transparency"):Connect(function()
+               decal.Changed:Connect(function()
                     if decal.Transparency < .5 then
                         print('added',decal.Name)
                         table.insert(cache, decal.Name)
@@ -218,7 +222,9 @@ end)
             
             local Map = workspace.House["Buzz In"]
             game.ReplicatedStorage.Comps.BuzzIn.OnClientEvent:Connect(function(...)
-                print(...)
+                wait(.2)
+                local split = string.split(CurrentDialog, "less")
+                print(game:GetService("HttpService"):JSONEncode(split))
             end)
             
         end    
