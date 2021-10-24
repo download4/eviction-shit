@@ -231,7 +231,7 @@ end)
                 wait(.2)
                 local split = string.split(CurrentDialog, "less")
                 print(game:GetService("HttpService"):JSONEncode(split))
-                local third = split[3]
+                local third = split[2]
                 third = string.sub(third, 0, #third-1)
                 print(third)
                 local both = string.split(third, "than")
