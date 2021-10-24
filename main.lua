@@ -106,7 +106,7 @@ end)
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
             game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false
         elseif name == "Fire Escape" then
-            game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
+            wait(3)
             local water = nil
             local closest = 150
             for _, t in ipairs(workspace:GetDescendants()) do
@@ -127,9 +127,9 @@ end)
                 getWater()
                 repeat
                     for _, fire in ipairs(workspace:GetDescendants()) do
-                    if fire.Name == "Extinguish" then
-                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, fire, 1)
-                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, fire, 0)
+                    if fire:IsA("Fire") then
+                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, fire.Parent, 1)
+                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, fire.Parent, 0)
                         getWater()
                     end    
                     end  
