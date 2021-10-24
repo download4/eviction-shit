@@ -161,7 +161,7 @@ end)
             for i = 30,1,-1 do
                 task.spawn(function()
                     for _,touch in ipairs(workspace:GetDescendants()) do
-                        if touch:IsA("TouchTransmitter") then
+                        if touch:IsA("TouchTransmitter") and touch.Parent.Name ~="Fall" then
                             print("FIRING " .. touch.Parent.Name)
                             firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch.Parent, 1)
                             task.wait(.2)
