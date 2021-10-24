@@ -158,13 +158,15 @@ end)
             end)
         elseif name == "Cents of Balance" then
             wait(2)
-            workspace.House["Cents of Balance"].Fall.TouchInterest:Destroy()
-            local touch =  workspace.House["Cents of Balance"].Touch
             for i = 30,1,-1 do
                 task.spawn(function()
-                    firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch, 1)
-                    task.wait(.2)
-                    firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch, 0)
+                    for _,touch in ipairs(workspace:GetDescendants()) do
+                        if touch.Name == "Touch" then
+                            firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch, 1)
+                            task.wait(.2)
+                            firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch, 0)
+                        end
+                    end
                 end)    
                 task.wait(1)
             end    
@@ -277,7 +279,7 @@ end)
             
             local ImageToStuff = {
                 
-                
+                rbxassetid://265913845
                 
             }
             
