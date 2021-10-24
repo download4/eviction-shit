@@ -232,6 +232,10 @@ end)
                 print(game:GetService("HttpService"):JSONEncode(split))
             end)
             
+        elseif name == "Clubbing" then
+            
+            workspace.House:WaitForChild("Clubbing"):WaitForChild("Walls"):Destroy()
+            
         end    
     end)    
     
