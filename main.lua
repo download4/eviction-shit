@@ -11,7 +11,7 @@ if not game.Teams:FindFirstChild("Jury") then
     game.StarterGui:SetCore("SendNotification", {
       Title = "Eviction Notice",
       Text = "Joined game for you. Re-execute when teleported",
-      Duratin = 15
+      Duration = 15
     })
 else
     game.StarterGui:SetCore("SendNotification", {
@@ -75,12 +75,15 @@ end)
             game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false
         elseif name == "Sinking Feeling" then
              game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
-            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = true
-            game.ReplicatedStorage.Game.Dialogue.OnClientEvent:Wait()
-            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false
+            gworkspace.House["Sinking Feeling"].Kill['TouchInterest']:Destroy()
         elseif name == "Watch Your Step" then
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
-            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = true
+            for _,v in ipairs(workspace.House["Watch Your Step"].Platforms:GetChildren()) do
+                local cc = v:Clone()
+                cc.Parent = workspace
+                cc.Anchored = true
+                cc.Name = "troll"
+            end
             game.ReplicatedStorage.Game.Dialogue.OnClientEvent:Wait()
             game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false
         elseif name == "Tile Trekkers" then
@@ -88,7 +91,7 @@ end)
             local cf = game.Players.LocalPlayer.Character:GetPrimaryPartCFrame()
             cf = cf + (cf.lookVector * 8)
             for i = 1, (150*4) do
-                for _,v in ipairs(workspace:GetDescendants()) do
+                for _,v in ipairs(workspace.House['Tile Trekkers'].Tiles:GetDescendants()) do
                     if v:IsA("TouchTransmitter") then
                         task.spawn(function()
                             firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
@@ -101,9 +104,10 @@ end)
             end   
         elseif name == "Bomboozled" then
              game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
-            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = true
-            game.ReplicatedStorage.Game.Dialogue.OnClientEvent:Wait()
-            game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false
+             game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false
+for _,v in ipairs(workspace:GetDescendants()) do
+    if v:IsA("TouchTransmitter") then print('no more ' .. v.Name) v:Destroy() end
+end
         elseif name == "Lumber Leapers" then
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
             game.Players.LocalPlayer.Character.PrimaryPart.Anchored = true
@@ -160,18 +164,19 @@ end)
         elseif name == "Cents of Balance" then
             wait(2)
             for i = 30,1,-1 do
-                task.spawn(function()
                     for _,touch in ipairs(workspace:GetDescendants()) do
                         if touch:IsA("TouchTransmitter") and touch.Parent.Name ~="Fall" then
-                            print("FIRING " .. touch.Parent.Name)
-                            firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch.Parent, 1)
-                            task.wait(.2)
-                            firetouchinterest(game.Players.LocalPlayer.HumanoidRootPart, touch.Parent, 0)
+                            touch:Destroy()
                         elseif v:IsA("ClickDetector") then
                             fireclickdetector(v)
+                            game.Players.LocalPlayer.Character:MoveTo(v.Parent.Position)
+                            wait(.1)
+                        end
+                        if touch.Name == "Return" then
+                            game.Players.LocalPlayer.Character:MoveTo(touch.Position)
+                            wait(.1)
                         end
                     end
-                end)    
                 task.wait(1)
             end    
         elseif name == "Baking Blast" then
@@ -278,6 +283,8 @@ end)
             end  
         elseif Child.Name == "Burger Bustle" then
             
+            wait(15)
+            
             print("burger")
             cname = "Burger Bustle"
             
@@ -293,7 +300,10 @@ end)
             
             local ImageToStuff = {
                 
-                ["rbxassetid://265913845"] = "Cheese"
+                ["rbxassetid://2659138456"] = "Cheese",
+                ["rbxassetid://2659172909"] = "Tomato",
+                ["rbxassetid://2659176043"] = "Onion",
+                ["rbxassetid://2659168628"] = "Lettuce"
                 
             }
             
@@ -313,6 +323,16 @@ end)
             
             for i = 1, 5 do
                 MakeBurger() -- make a burger (bun and patty)
+                local p = workspace.House["Burger Bustle"]>Hitbox.Others.PlaceOrder['3']
+                for _, v in ipairs(workspace.House["Burger Bustle"].List["3"]["Screen"]:GetChildren()) do
+                   if ImageToStuff[v.Image] then
+                       local bii = Hitbox:FindFirstChild(ImageToStuff[v.Image], true)
+                       firetouchinterest(game.Players.LocalPlayer.Character.PrimaryPart, bii, 0)
+                       wait()
+                       firetouchinterest(game.Players.LocalPlayer.Character.PrimaryPart, bii, 1)
+                   end
+                end
+                wait(1)
             end
             
         end    
