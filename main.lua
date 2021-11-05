@@ -75,7 +75,7 @@ end)
             game.Players.LocalPlayer.Character.PrimaryPart.Anchored = false
         elseif name == "Sinking Feeling" then
              game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
-            gworkspace.House["Sinking Feeling"].Kill['TouchInterest']:Destroy()
+             workspace.House["Sinking Feeling"].Kill['TouchInterest']:Destroy()
         elseif name == "Watch Your Step" then
             game.ReplicatedStorage.General.Move.OnClientEvent:Wait()
             for _,v in ipairs(workspace.House["Watch Your Step"].Platforms:GetChildren()) do
